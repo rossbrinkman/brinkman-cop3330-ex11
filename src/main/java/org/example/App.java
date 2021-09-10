@@ -1,4 +1,5 @@
 package org.example;
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 /*
@@ -10,22 +11,20 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "What is the first number? " );
-
+        DecimalFormat f = new DecimalFormat("##.00");
         Scanner scanner = new Scanner(System.in);
-        String first, second;
-        int firstNumber, secondNumber;
+        int euros;
+        float exchangeRate, usDollars;
 
-        first = scanner.nextLine();
-        firstNumber = Integer.parseInt(first);
+        System.out.println( "How many euros are you exchanging? " );
+        euros = scanner.nextInt();
 
-        System.out.println( "What is the second number? " );
-        second = scanner.nextLine();
-        secondNumber = Integer.parseInt(second);
+        System.out.println( "What is the exchange rate? " );
+        exchangeRate = scanner.nextFloat();
 
-        System.out.println( firstNumber + " + " + secondNumber + " = " + (firstNumber+secondNumber));
-        System.out.println( firstNumber + " - " + secondNumber + " = " + (firstNumber-secondNumber));
-        System.out.println( firstNumber + " * " + secondNumber + " = " + (firstNumber*secondNumber));
-        System.out.println( firstNumber + " / " + secondNumber + " = " + (firstNumber/secondNumber));
+        usDollars = euros * exchangeRate;
+
+        System.out.println( euros + " euros at an exchange rate of " + exchangeRate + " is "
+                + f.format(usDollars) + " U.S. Dollars.");
     }
 }
